@@ -1,6 +1,6 @@
 # <p id="top" align="center">Sass Course Assignments</p>
 
-Current Progress : <p>![](https://progress-bar.dev/0/?scale=100&width=1100)</p>
+Current Progress : <p>![](https://progress-bar.dev/41/?scale=100&width=1100)</p>
 <hr>
 
 - ### Table of Contents:
