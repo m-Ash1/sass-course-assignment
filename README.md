@@ -1,6 +1,6 @@
 # <p id="top" align="center">Sass Course Assignments</p>
 
-Current Progress : <p>![](https://progress-bar.dev/41/?scale=100&width=1100)</p>
+Current Progress : <p>![](https://progress-bar.dev/62/?scale=100&width=1100)</p>
 <hr>
 
 - ### Table of Contents:
@@ -193,8 +193,88 @@ $link-hover: $red;
 ```
 
 #### For Lessons 07 To 10
-> To be added
+##### Assignment 1
+```scss
+// division operatiion (/) is deprecated and will be removed in future version of sass 2.0 so we will use math.div() instead
 
+@use "sass:math";
+
+$main: "school";
+$child: "box";
+$language: "en"; // English
+$gap: 20px;
+
+.#{$main} {
+  padding: $gap;
+  direction: if($language == "en", ltr, rtl);
+  margin-left: $gap;
+  &-box{
+    padding: math.div($gap, 2);
+  }
+  &:hover &-box{
+    background-color: red;
+  }
+}
+```
+
+##### Assignment 2
+```scss
+// SASS Code
+$main-color: red;
+$alt-color: blue;
+
+// Needed Output
+/* Theme Version: 1.0 */
+/* Website Theme Main Color Is: #{$main-color} */
+/* Website Theme Alternate Color Is: #{$alt-color} */
+```
+
+##### Assignment 3
+```scss
+// SASS Code
+$number: 10;
+$number: 8;
+$number: 5;
+
+.class {
+  color: if($number > 8, blue, if($number > 5, green, red));
+}
+```
+
+##### Assignment 4
+```scss
+// SASS Code
+$number: 10;
+$color: red;
+$theme: "light";
+
+// Write If Condition Code Here
+@if ($number > 10 and $color == red and not ($theme == "dark")) {
+  .class {
+    color: blue;
+  }
+}
+```
+
+##### Assignment 5
+```scss
+// SASS Code
+$number: 10;
+
+// Output
+@if ($number >= 8) {
+  @if ($number == 9) {
+    .box {
+      background-color: #eee;
+    }
+  } @else if ($number == 10) {
+    .box {
+      background-color: #eee;
+      text-align: center;
+    }
+  } 
+}
+```
 <hr>
 
 ### Week 2: Mixin and Loops - from 11 to 19
