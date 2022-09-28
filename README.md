@@ -278,7 +278,189 @@ $number: 10;
 <hr>
 
 ### Week 2: Mixin and Loops - from 11 to 19
-> To be added
+
+#### For Lessons 11 To 15
+
+##### Assignment 1
+```scss
+@mixin arrow($direction) {
+  @if ($direction == "right") {
+    content: "";
+    position: absolute;
+    border: 20px solid transparent;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -40px;
+    border-left-color: red;
+  } @else if($direction == "left") {
+    content: "";
+    position: absolute;
+    border: 20px solid transparent;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -40px;
+    border-right-color: red;
+  } @else if($direction == "top") {
+    content: "";
+    position: absolute;
+    border: 20px solid transparent;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom-color: red;
+  } @else if($direction == "bottom") {
+    content: "";
+    position: absolute;
+    border: 20px solid transparent;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -40px;
+    border-top-color: red;
+  }
+}
+
+.element {
+  &:before {
+    @include arrow("left");
+  }
+}
+```
+
+##### Assignment 2
+```scss
+$grid_cols: 16;
+@for $i from 1 through $grid_cols {
+  .col-#{$i} {
+    width: percentage($i/$grid_cols);
+  }
+}
+```
+
+##### Assignment 3
+```scss
+$names: "books" 20px red 18, "games" 30px green 18, "dvds" 20px blue;
+
+@each $name, $padding, $color, $font_size in $names {
+  .#{$name} {
+    padding: $padding;
+    font-size: if($font_size == null, 16px, #{$font_size}px);
+    border-bottom: 2px solid $color;
+    color: #444;
+  }
+}
+```
+
+##### Assignment 4
+```scss
+$init: 1;
+@while $init<=5 {
+  .circle-#{$init * 100} {
+    width: $init * 100px;
+    height: $init * 100px;
+    border-radius: #{math.div($init * 100, 2)}px;
+  }
+  $init: $init + 1;
+}
+```
+
+##### Assignment 5
+```scss
+$init: 1;
+@for $i from $init through 5 {
+  .circle-#{$init * 100} {
+    width: $init * 100px;
+    height: $init * 100px;
+    border-radius: #{math.div($init * 100, 2)}px;
+  }
+  $init: $init + 1;
+}
+```
+
+##### Assignment 6
+```scss
+// Write Mixin Code Here
+@mixin placeholder {
+  &.placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+  &::-webkit-input-placeholder {
+    @content;
+  }
+}
+
+// Using
+textarea {
+  @include placeholder {
+    color: #777;
+  }
+}
+```
+
+##### Assignment 7
+```scss
+// Write Mixin Code Here
+@mixin flex-center($width...) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: if(length($width) > 0, nth($width, 1) , 400px); // nth($width, 1) returns the first argument something like $width[0]
+}
+
+// Using
+.box-one {
+  @include flex-center(400px);
+}
+.box-two {
+  @include flex-center;
+}
+```
+
+#### For Lessons 16 To 19
+
+##### Assignment 1
+```scss
+$num: 2;
+$start: 100;
+$steps: 5;
+
+@function double($size) {
+  @return $size * $num;
+}
+
+$i: 1;
+@while $i < math.pow(2, $steps) {
+  .box-#{$i*$start} {
+    width: #{$i * $start}px;
+    height: #{double($i * $start)}px;
+  }
+  $i: $i * 2;
+}
+```
+
+##### Assignment 2
+```scss
+@function get-total($values...) {
+  $total: 0;
+  @each $value in $values {
+    $total: $total + $value;
+  }
+  @return $total;
+}
+
+.box {
+  top: get-total(100, 50, 20);
+  right: get-total(100, 50);
+}
+```
 
 
-
+// ALHAMDULILAH
